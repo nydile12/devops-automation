@@ -1,0 +1,16 @@
+#!/bin/bash
+LOG_FILE="../log/app.log"
+echo "=================================="
+echo "       Log Analyzer               "
+echo "=================================="
+echo ""
+echo "Total Log Lines $(wc -l < $LOG_FILE)"
+echo ""
+echo "Error Count $(grep -c 'ERROR' $LOG_FILE)"
+echo ""
+echo "Warning Count $(grep -c 'WARNING' $LOG_FILE)"
+echo ""
+echo "Info Count $(grep -c 'INFO' $LOG_FILE)"
+echo ""
+echo "Error Details"
+grep 'ERROR' $LOG_FILE
