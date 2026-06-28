@@ -1,6 +1,6 @@
 from pymongo import MongoClient
 
-client = MongoClient("mongodb+srv://nydile12:nydile1234@cluster0.lgu3gt4.mongodb.net/?appName=Cluster0")
+client = MongoClient("")
 db = client['devops_db']
 collection = db['users']
 
