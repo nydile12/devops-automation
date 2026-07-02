@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" 
+          content="width=device-width, 
+                   initial-scale=1.0">
+    <title>Hill View Homestay - Chickmagalur</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" 
+          rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" 
+          rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Lato:wght@300;400;700&display=swap" 
+          rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="{{ url_for('static', filename='css/style.css') }}" 
+          rel="stylesheet">
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="/">
+            <i class="fas fa-mountain"></i>
+            Hill View Homestay
+        </a>
+        <button class="navbar-toggler" 
+                type="button" 
+                data-bs-toggle="collapse" 
+                data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" 
+             id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="/">
+                        Home
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/rooms">
+                        Rooms
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/attractions">
+                        Attractions
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/enquiry">
+                        Enquiry
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link btn-book" 
+                       href="/booking">
+                        Book Now
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- Main Content -->
+<main>
+    {% block content %}{% endblock %}
+</main>
+
+<!-- Footer -->
+<footer class="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <h5>
+                    <i class="fas fa-mountain"></i>
+                    Hill View Homestay
+                </h5>
+                <p>Experience the magic of
+                   Chickmagalur in our cozy
+                   hillside retreat.</p>
+            </div>
+            <div class="col-md-4">
+                <h5>Quick Links</h5>
+                <ul class="list-unstyled">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+                    <li>
+                        <a href="/rooms">Rooms</a>
+                    </li>
+                    <li>
+                        <a href="/attractions">
+                            Attractions
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/booking">
+                            Book Now
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-md-4">
+                <h5>Contact Us</h5>
+                <p>
+                    <i class="fas fa-map-marker-alt">
+                    </i>
+                    Chickmagalur, Karnataka
+                </p>
+                <p>
+                    <i class="fas fa-phone"></i>
+                    +91 XXXXXXXXXX
+                </p>
+                <p>
+                    <i class="fas fa-envelope"></i>
+                    info@hillviewhomestay.com
+                </p>
+            </div>
+        </div>
+        <hr>
+        <p class="text-center">
+            © 2026 Hill View Homestay.
+            All rights reserved.
+        </p>
+    </div>
+</footer>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js">
+</script>
+
+</body>
+</html>

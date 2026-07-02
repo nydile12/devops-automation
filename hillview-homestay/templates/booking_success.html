@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<section class="success-page">
+    <div class="success-card">
+        <div class="success-icon">
+            <i class="fas fa-check-circle"></i>
+        </div>
+        <h2 style="color:var(--primary);
+                   margin-bottom:15px;">
+            Booking Confirmed!
+        </h2>
+        <p style="color:#666;
+                  margin-bottom:30px;">
+            Thank you for choosing
+            Hill View Homestay! We'll
+            contact you shortly to
+            confirm your reservation.
+        </p>
+        <div style="background:var(--light);
+                    border-radius:10px;
+                    padding:20px;
+                    margin-bottom:25px;">
+            <p style="color:#666;margin:0;">
+                <i class="fas fa-phone" style="color:var(--primary)">
+                </i>
+                For queries call:
+                <strong>+91 XXXXXXXXXX</strong>
+            </p>
+        </div>
+        <a href="/" class="btn-primary-custom">
+            <i class="fas fa-home"></i>
+            Back to Home
+        </a>
+    </div>
+</section>
+
+{% endblock %}

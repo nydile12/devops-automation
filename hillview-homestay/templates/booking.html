@@ -1,0 +1,248 @@
+{% extends "base.html" %} {% block content %}
+
+<!-- Page Header -->
+<section
+  style="
+    background:
+      linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+      url(&quot;../static/images/entrance.jpg&quot;) center/cover no-repeat;
+    height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+    margin-top: 56px;
+  "
+>
+  <div>
+    <h1
+      style="
+        font-family: &quot;Playfair Display&quot;, serif;
+        font-size: 3rem;
+        margin-bottom: 10px;
+      "
+    >
+      Book Your Stay
+    </h1>
+    <p style="font-size: 1.1rem; opacity: 0.9">
+      Reserve your perfect room today
+    </p>
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb justify-content-center">
+        <li class="breadcrumb-item">
+          <a href="/" style="color: var(--accent)"> Home </a>
+        </li>
+        <li class="breadcrumb-item active" style="color: white">Booking</li>
+      </ol>
+    </nav>
+  </div>
+</section>
+
+<!-- Booking Form -->
+<section class="section">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-8">
+        <div class="form-section">
+          <div class="text-center mb-4">
+            <h2 style="color: var(--primary)">Reserve Your Room</h2>
+            <p style="color: #666">
+              Fill in the details below and we'll confirm your booking shortly
+            </p>
+          </div>
+
+          <form method="POST" action="/booking">
+            <!-- Personal Details -->
+            <h5
+              style="
+                color: var(--primary);
+                border-bottom: 2px solid var(--accent);
+                padding-bottom: 10px;
+                margin-bottom: 20px;
+              "
+            >
+              <i class="fas fa-user"></i>
+              Personal Details
+            </h5>
+
+            <div class="row">
+              <div class="col-md-12 mb-3">
+                <label class="form-label"> Full Name * </label>
+                <input
+                  type="text"
+                  name="name"
+                  class="form-control"
+                  placeholder="Enter your full name"
+                  required
+                />
+              </div>
+              <div class="col-md-6 mb-3">
+                <label class="form-label"> Email Address * </label>
+                <input
+                  type="email"
+                  name="email"
+                  class="form-control"
+                  placeholder="your@email.com"
+                  required
+                />
+              </div>
+              <div class="col-md-6 mb-3">
+                <label class="form-label"> Phone Number * </label>
+                <input
+                  type="tel"
+                  name="phone"
+                  class="form-control"
+                  placeholder="Enter number"
+                  required
+                />
+              </div>
+            </div>
+
+            <!-- Booking Details -->
+            <h5
+              style="
+                color: var(--primary);
+                border-bottom: 2px solid var(--accent);
+                padding-bottom: 10px;
+                margin-bottom: 20px;
+                margin-top: 20px;
+              "
+            >
+              <i class="fas fa-calendar"> </i>
+              Booking Details
+            </h5>
+
+            <div class="row">
+              <div class="col-md-12 mb-3">
+                <label class="form-label"> Room Type * </label>
+                <select name="room_type" class="form-control" required>
+                  <option value="">Select a Room</option>
+                  {% for room in rooms %}
+                  <option value="{{ room.name }}">
+                    {{ room.name }} — ₹{{ room.price }}/night
+                  </option>
+                  {% endfor %}
+                </select>
+              </div>
+              <div class="col-md-6 mb-3">
+                <label class="form-label"> Check-in Date * </label>
+                <input
+                  type="date"
+                  name="check_in"
+                  class="form-control"
+                  required
+                />
+              </div>
+              <div class="col-md-6 mb-3">
+                <label class="form-label"> Check-out Date * </label>
+                <input
+                  type="date"
+                  name="check_out"
+                  class="form-control"
+                  required
+                />
+              </div>
+              <div class="col-md-6 mb-3">
+                <label class="form-label"> Number of Guests * </label>
+                <select name="guests" class="form-control" required>
+                  <option value="1">1 Guest</option>
+                  <option value="2">2 Guests</option>
+                  <option value="3">3 Guests</option>
+                  <option value="4">4 Guests</option>
+                  <option value="5">5 Guests</option>
+                  <option value="6">6 Guests</option>
+                </select>
+              </div>
+              <div class="col-md-6 mb-3">
+                <label class="form-label"> Special Requests </label>
+                <input
+                  type="text"
+                  name="special_requests"
+                  class="form-control"
+                  placeholder="Any special requests?"
+                />
+              </div>
+            </div>
+
+            <!-- Submit -->
+            <button type="submit" class="btn-submit mt-3">
+              <i class="fas fa-calendar-check"> </i>
+              Confirm Booking
+            </button>
+          </form>
+        </div>
+      </div>
+
+      <!-- Booking Info Sidebar -->
+      <div class="col-md-4">
+        <div
+          style="
+            background: var(--light);
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 20px;
+          "
+        >
+          <h5 style="color: var(--primary); margin-bottom: 20px">
+            <i class="fas fa-info-circle"> </i>
+            Booking Information
+          </h5>
+          <ul class="list-unstyled">
+            <li class="mb-3">
+              <i class="fas fa-check text-success"> </i>
+              Check-in: 12:00 PM
+            </li>
+            <li class="mb-3">
+              <i class="fas fa-check text-success"> </i>
+              Check-out: 11:00 AM
+            </li>
+            <li class="mb-3">
+              <i class="fas fa-check text-success"> </i>
+              Free Cancellation (24hrs before)
+            </li>
+            <li class="mb-3">
+              <i class="fas fa-check text-success"> </i>
+              Breakfast Included
+            </li>
+            <li class="mb-3">
+              <i class="fas fa-check text-success"> </i>
+              Free Parking
+            </li>
+            <li class="mb-3">
+              <i class="fas fa-check text-success"> </i>
+              Free WiFi
+            </li>
+          </ul>
+        </div>
+
+        <!-- Contact Card -->
+        <div
+          style="
+            background: var(--primary);
+            border-radius: 15px;
+            padding: 30px;
+            color: white;
+          "
+        >
+          <h5 style="color: var(--accent); margin-bottom: 20px">
+            <i class="fas fa-headset"> </i>
+            Need Help?
+          </h5>
+          <p style="color: rgba(255, 255, 255, 0.8)">
+            Call us directly to make a reservation
+          </p>
+          <p style="font-size: 1.3rem; font-weight: 700; color: white">
+            <i class="fas fa-phone" style="color: var(--accent)"> </i>
+            +91 XXXXXXXXXX
+          </p>
+          <p style="color: rgba(255, 255, 255, 0.8); font-size: 0.9rem">
+            Available 8AM - 8PM daily
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% endblock %}

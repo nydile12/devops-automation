@@ -1,0 +1,189 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<!-- Page Header -->
+<section style="background:linear-gradient(
+                rgba(0,0,0,0.6),
+                rgba(0,0,0,0.6)),
+                url('../static/images/arial_view_1.jpg')
+                center/cover no-repeat;
+                height:300px;
+                display:flex;
+                align-items:center;
+                justify-content:center;
+                text-align:center;
+                color:white;
+                margin-top:56px;">
+    <div>
+        <h1 style="font-family:'Playfair Display',serif;
+                   font-size:3rem;
+                   margin-bottom:10px;">
+            Nearby Attractions
+        </h1>
+        <p style="font-size:1.1rem;opacity:0.9;">
+            Explore the beauty of Chickmagalur
+        </p>
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb
+                        justify-content-center">
+                <li class="breadcrumb-item">
+                    <a href="/" style="color:var(--accent)">
+                        Home
+                    </a>
+                </li>
+                <li class="breadcrumb-item active" style="color:white;">
+                    Attractions
+                </li>
+            </ol>
+        </nav>
+    </div>
+</section>
+
+<!-- Attractions Section -->
+<section class="section">
+    <div class="container">
+        <div class="section-title">
+            <h2>Places to Visit</h2>
+            <p>Discover the natural wonders
+                around Hill View Homestay</p>
+        </div>
+        <div class="row">
+            {% for attraction in attractions %}
+            <div class="col-md-4 mb-4">
+                <div class="attraction-card">
+                    <div style="overflow:hidden;">
+                        <img src="{{ url_for('static',
+                             filename='images/' +
+                             attraction.get('image',
+                             'attraction1.jpg')) }}" alt="{{ attraction.name }}" style="width:100%;
+                                    height:220px;
+                                    object-fit:cover;
+                                    transition:transform
+                                    0.5s ease;"
+                            onerror="this.src='https://via.placeholder.com/400x220?text={{ attraction.name }}'">
+                    </div>
+                    <div class="attraction-body">
+                        <div class="d-flex
+                             justify-content-between
+                             align-items-center
+                             mb-2">
+                            <h5 style="margin:0;
+                                       color:var(--primary);">
+                                {{ attraction.name }}
+                            </h5>
+                            <span class="attraction-distance">
+                                <i class="fas fa-map-marker-alt">
+                                </i>
+                                {{ attraction.distance }}
+                            </span>
+                        </div>
+                        <p style="color:#666;
+                                  font-size:0.9rem;
+                                  margin-bottom:15px;">
+                            {{ attraction.description }}
+                        </p>
+                        <a href="/booking" style="color:var(--primary);
+                                  font-weight:600;
+                                  text-decoration:none;
+                                  font-size:0.9rem;">
+                            Book Stay Nearby
+                            <i class="fas fa-arrow-right">
+                            </i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            {% else %}
+            <div class="col-12 text-center">
+                <p>Attractions coming soon!</p>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!-- Travel Tips -->
+<section class="section section-light">
+    <div class="container">
+        <div class="section-title">
+            <h2>Travel Tips</h2>
+            <p>Make the most of your
+                Chickmagalur trip</p>
+        </div>
+        <div class="row">
+            <div class="col-md-3 col-6">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-sun"></i>
+                    </div>
+                    <h5>Best Season</h5>
+                    <p>October to February
+                        is ideal for visiting
+                        Chickmagalur</p>
+                </div>
+            </div>
+            <div class="col-md-3 col-6">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-car"></i>
+                    </div>
+                    <h5>How to Reach</h5>
+                    <p>Drive from Bangalore
+                        (250 km) or take bus
+                        to Chickmagalur</p>
+                </div>
+            </div>
+            <div class="col-md-3 col-6">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-tshirt"></i>
+                    </div>
+                    <h5>What to Wear</h5>
+                    <p>Light woolens during
+                        winter, casuals during
+                        summer months</p>
+                </div>
+            </div>
+            <div class="col-md-3 col-6">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-camera"></i>
+                    </div>
+                    <h5>Photography</h5>
+                    <p>Golden hours at sunrise
+                        and sunset offer
+                        stunning shots</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CTA -->
+<section class="section section-green">
+    <div class="container text-center">
+        <h2 style="color:var(--accent);
+                   font-family:'Playfair Display',serif;">
+            Ready to Explore?
+        </h2>
+        <p style="color:rgba(255,255,255,0.8);
+                  margin:15px 0 30px;">
+            Book your stay at Hill View Homestay
+            and explore all these amazing places
+        </p>
+        <div class="hero-btns">
+            <a href="/booking" class="btn-primary-custom">
+                <i class="fas fa-calendar-check">
+                </i>
+                Book Now
+            </a>
+            <a href="/enquiry" class="btn-secondary-custom">
+                <i class="fas fa-envelope"></i>
+                Send Enquiry
+            </a>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

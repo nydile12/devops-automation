@@ -1,0 +1,195 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<!-- Page Header -->
+<section style="background:linear-gradient(
+                rgba(0,0,0,0.6),
+                rgba(0,0,0,0.6)),
+                url('../static/images/balcony.jpg')
+                center/cover no-repeat;
+                height:300px;
+                display:flex;
+                align-items:center;
+                justify-content:center;
+                text-align:center;
+                color:white;
+                margin-top:56px;">
+    <div>
+        <h1 style="font-family:'Playfair Display',serif;
+                   font-size:3rem;
+                   margin-bottom:10px;">
+            Get In Touch
+        </h1>
+        <p style="font-size:1.1rem;opacity:0.9;">
+            We'd love to hear from you
+        </p>
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb
+                        justify-content-center">
+                <li class="breadcrumb-item">
+                    <a href="/" style="color:var(--accent)">
+                        Home
+                    </a>
+                </li>
+                <li class="breadcrumb-item active" style="color:white;">
+                    Enquiry
+                </li>
+            </ol>
+        </nav>
+    </div>
+</section>
+
+<!-- Enquiry Section -->
+<section class="section">
+    <div class="container">
+        <div class="row justify-content-center">
+
+            <!-- Enquiry Form -->
+            <div class="col-md-7">
+                <div class="form-section">
+                    <div class="text-center mb-4">
+                        <h2 style="color:var(--primary)">
+                            Send Us a Message
+                        </h2>
+                        <p style="color:#666;">
+                            Have questions? We'll
+                            get back to you within
+                            24 hours
+                        </p>
+                    </div>
+
+                    <form method="POST" action="/enquiry">
+                        <div class="mb-3">
+                            <label class="form-label">
+                                Full Name *
+                            </label>
+                            <input type="text" name="name" class="form-control" placeholder="Your full name" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">
+                                Email Address *
+                            </label>
+                            <input type="email" name="email" class="form-control" placeholder="your@email.com" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">
+                                Phone Number *
+                            </label>
+                            <input type="tel" name="phone" class="form-control" placeholder="+91 Enter Number" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">
+                                Your Message *
+                            </label>
+                            <textarea name="message" class="form-control" rows="5"
+                                placeholder="Tell us about your travel plans, dates, number of guests..."
+                                required></textarea>
+                        </div>
+                        <button type="submit" class="btn-submit">
+                            <i class="fas fa-paper-plane">
+                            </i>
+                            Send Message
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Contact Info Sidebar -->
+            <div class="col-md-5">
+                <!-- Contact Details -->
+                <div style="background:var(--primary);
+                            border-radius:15px;
+                            padding:30px;
+                            color:white;
+                            margin-bottom:20px;">
+                    <h5 style="color:var(--accent);
+                               margin-bottom:25px;">
+                        <i class="fas fa-map-marker-alt">
+                        </i>
+                        Contact Information
+                    </h5>
+                    <div class="mb-4">
+                        <i class="fas fa-map-marker-alt" style="color:var(--accent);
+                                  width:25px;">
+                        </i>
+                        <span>Chickmagalur,
+                            Karnataka, India</span>
+                    </div>
+                    <div class="mb-4">
+                        <i class="fas fa-phone" style="color:var(--accent);
+                                  width:25px;">
+                        </i>
+                        <span>+91 XXXXXXXXXX</span>
+                    </div>
+                    <div class="mb-4">
+                        <i class="fas fa-envelope" style="color:var(--accent);
+                                  width:25px;">
+                        </i>
+                        <span>info@hillviewhomestay.com</span>
+                    </div>
+                    <div class="mb-4">
+                        <i class="fas fa-clock" style="color:var(--accent);
+                                  width:25px;">
+                        </i>
+                        <span>Available 8AM - 8PM daily</span>
+                    </div>
+                </div>
+
+                <!-- Quick Info -->
+                <div style="background:var(--light);
+                            border-radius:15px;
+                            padding:30px;">
+                    <h5 style="color:var(--primary);
+                               margin-bottom:20px;">
+                        <i class="fas fa-question-circle">
+                        </i>
+                        Quick Info
+                    </h5>
+                    <div class="mb-3">
+                        <strong style="color:var(--primary)">
+                            Check-in Time:
+                        </strong>
+                        <span style="color:#666;">
+                            12:00 PM
+                        </span>
+                    </div>
+                    <div class="mb-3">
+                        <strong style="color:var(--primary)">
+                            Check-out Time:
+                        </strong>
+                        <span style="color:#666;">
+                            11:00 AM
+                        </span>
+                    </div>
+                    <div class="mb-3">
+                        <strong style="color:var(--primary)">
+                            Nearest City:
+                        </strong>
+                        <span style="color:#666;">
+                            Chickmagalur (5 km)
+                        </span>
+                    </div>
+                    <div class="mb-3">
+                        <strong style="color:var(--primary)">
+                            Nearest Airport:
+                        </strong>
+                        <span style="color:#666;">
+                            Mangalore (150 km)
+                        </span>
+                    </div>
+                    <div class="mb-3">
+                        <strong style="color:var(--primary)">
+                            Languages Spoken:
+                        </strong>
+                        <span style="color:#666;">
+                            Kannada, English, Hindi
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

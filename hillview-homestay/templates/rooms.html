@@ -1,0 +1,223 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<!-- Page Header -->
+<section style="background:linear-gradient(
+                rgba(0,0,0,0.6),
+                rgba(0,0,0,0.6)),
+                url('../static/images/arial_view.jpg')
+                center/cover no-repeat;
+                height:300px;
+                display:flex;
+                align-items:center;
+                justify-content:center;
+                text-align:center;
+                color:white;
+                margin-top:56px;">
+    <div>
+        <h1 style="font-family:'Playfair Display',serif;
+                   font-size:3rem;
+                   margin-bottom:10px;">
+            Our Rooms
+        </h1>
+        <p style="font-size:1.1rem;
+                  opacity:0.9;">
+            Choose your perfect stay
+        </p>
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb justify-content-center">
+                <li class="breadcrumb-item">
+                    <a href="/" style="color:var(--accent)">
+                        Home
+                    </a>
+                </li>
+                <li class="breadcrumb-item active" style="color:white;">
+                    Rooms
+                </li>
+            </ol>
+        </nav>
+    </div>
+</section>
+
+<!-- Rooms Section -->
+<section class="section">
+    <div class="container">
+        <div class="section-title">
+            <h2>All Rooms</h2>
+            <p>Every room is designed for
+                comfort with stunning views</p>
+        </div>
+        <div class="row">
+            {% for room in rooms %}
+            <div class="col-md-6 mb-4">
+                <div class="room-card" style="display:flex;
+                            flex-direction:column;
+                            height:100%;">
+                    <!-- Room Image -->
+                    <div style="overflow:hidden;
+                                border-radius:15px
+                                15px 0 0;">
+                        <img src="{{ url_for('static',
+                             filename='images/' +
+                             room.get('image',
+                             'room1.jpg')) }}" alt="{{ room.name }}" style="width:100%;
+                                    height:500px;
+                                    object-fit:cover;
+                                    transition:transform
+                                    0.5s ease;">
+                    </div>
+
+                    <!-- Room Details -->
+                    <div class="room-card-body" style="flex:1;">
+                        <h3>{{ room.name }}</h3>
+                        <p style="color:#666;
+                                  margin-bottom:15px;">
+                            {{ room.description }}
+                        </p>
+
+                        <!-- Room Features -->
+                        <div class="room-features
+                                    mb-3">
+                            <span class="room-feature">
+                                <i class="fas fa-user">
+                                </i>
+                                {{ room.capacity }}
+                                Guests
+                            </span>
+                            <span class="room-feature">
+                                <i class="fas fa-bed">
+                                </i>
+                                {{ room.bed_type }}
+                            </span>
+                        </div>
+
+                        <!-- Amenities -->
+                        <div class="mb-3">
+                            {% for amenity in
+                            room.get('amenities', []) %}
+                            <span style="background:
+                                         rgba(44,95,46,0.1);
+                                         color:var(--primary);
+                                         padding:5px 12px;
+                                         border-radius:20px;
+                                         font-size:0.8rem;
+                                         margin:3px;
+                                         display:inline-block;">
+                                {{ amenity }}
+                            </span>
+                            {% endfor %}
+                        </div>
+
+                        <!-- Price + Book -->
+                        <div class="d-flex
+                             justify-content-between
+                             align-items-center
+                             mt-auto pt-3" style="border-top:1px
+                                    solid #eee;">
+                            <div>
+                                <div class="room-price">
+                                    ₹{{ room.price }}
+                                    <span>/night</span>
+                                </div>
+                                <small style="color:#999;">
+                                    Per night,
+                                    taxes included
+                                </small>
+                            </div>
+                            <a href="/booking" class="btn" style="background:
+                                      var(--primary);
+                                      color:white;
+                                      border-radius:25px;
+                                      padding:10px 25px;
+                                      font-weight:600;">
+                                Book Now
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!-- Why Book With Us -->
+<section class="section section-light">
+    <div class="container">
+        <div class="section-title">
+            <h2>Why Book With Us?</h2>
+            <p>We make your stay special</p>
+        </div>
+        <div class="row text-center">
+            <div class="col-md-3 col-6">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-tag"></i>
+                    </div>
+                    <h5>Best Price</h5>
+                    <p> Best rates guaranteed</p>
+                </div>
+            </div>
+            <div class="col-md-3 col-6">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-shield-alt">
+                        </i>
+                    </div>
+                    <h5>Safe & Secure</h5>
+                    <p>100% safe booking
+                        guaranteed</p>
+                </div>
+            </div>
+            <div class="col-md-3 col-6">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-headset"></i>
+                    </div>
+                    <h5>24/7 Support</h5>
+                    <p>We are always here
+                        to help you</p>
+                </div>
+            </div>
+            <div class="col-md-3 col-6">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-undo"></i>
+                    </div>
+                    <h5>Free Cancellation</h5>
+                    <p>Cancel up to 24hrs
+                        before check-in</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CTA -->
+<section class="section section-green">
+    <div class="container text-center">
+        <h2 style="color:var(--accent);
+                   font-family:'Playfair Display',serif;">
+            Can't Decide?
+        </h2>
+        <p style="color:rgba(255,255,255,0.8);
+                  margin:15px 0 30px;">
+            Send us an enquiry and we'll
+            help you choose the perfect room
+        </p>
+        <div class="hero-btns">
+            <a href="/enquiry" class="btn-primary-custom">
+                <i class="fas fa-envelope"></i>
+                Send Enquiry
+            </a>
+            <a href="/booking" class="btn-secondary-custom">
+                <i class="fas fa-calendar-check">
+                </i>
+                Book Now
+            </a>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

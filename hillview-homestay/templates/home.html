@@ -1,0 +1,597 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<!-- Hero Video Section -->
+<section style="position:relative;
+                height:100vh;
+                overflow:hidden;">
+    <!-- Background Video -->
+    <video autoplay muted loop style="position:absolute;
+                  top:0; left:0;
+                  width:100%;
+                  height:100%;
+                  object-fit:cover;
+                  z-index:0;">
+        <source src="{{ url_for('static',
+                  filename='images/ariel_view_main_video.mp4') }}" type="video/mp4">
+    </video>
+
+    <!-- Dark Overlay -->
+    <div style="position:absolute;
+                top:0; left:0;
+                width:100%; height:100%;
+                background:rgba(0,0,0,0.55);
+                z-index:1;">
+    </div>
+
+    <!-- Hero Content -->
+    <div style="position:relative;
+                z-index:2;
+                height:100%;
+                display:flex;
+                align-items:center;
+                justify-content:center;
+                text-align:center;
+                color:white;
+                padding:20px;">
+        <div class="hero-content animate">
+            <p style="color:var(--accent);
+                      font-size:1.1rem;
+                      letter-spacing:3px;
+                      text-transform:uppercase;
+                      margin-bottom:15px;">
+                Welcome to
+            </p>
+            <h1 style="font-size:4rem;
+                       font-weight:700;
+                       text-shadow:2px 2px 4px
+                       rgba(0,0,0,0.5);
+                       margin-bottom:20px;
+                       color:white;">
+                Hill View Homestay
+            </h1>
+            <p style="font-size:1.3rem;
+                      margin-bottom:10px;
+                      color:rgba(255,255,255,0.9);">
+                Nestled in the Heart of
+                Chickmagalur's Coffee Hills
+            </p>
+            <p style="font-size:1rem;
+                      margin-bottom:35px;
+                      color:rgba(255,255,255,0.7);">
+                Where Nature Meets Comfort
+            </p>
+            <div class="hero-btns">
+                <a href="/booking" class="btn-primary-custom">
+                    <i class="fas fa-calendar-check">
+                    </i> Book Your Stay
+                </a>
+                <a href="/rooms" class="btn-secondary-custom">
+                    <i class="fas fa-door-open">
+                    </i> Explore Rooms
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scroll Down Arrow -->
+    <div style="position:absolute;
+                bottom:30px;
+                left:50%;
+                transform:translateX(-50%);
+                z-index:2;
+                animation:bounce 2s infinite;">
+        <i class="fas fa-chevron-down" style="color:white;
+                  font-size:2rem;
+                  opacity:0.7;">
+        </i>
+    </div>
+</section>
+
+<!-- Quick Info Bar -->
+<section style="background:var(--primary);
+                padding:20px 0;">
+    <div class="container">
+        <div class="row text-center text-white">
+            <div class="col-md-3 col-6
+                        border-end">
+                <i class="fas fa-mountain
+                          fa-2x mb-2" style="color:var(--accent)">
+                </i>
+                <p class="mb-0 fw-bold">
+                    Hill Views
+                </p>
+            </div>
+            <div class="col-md-3 col-6
+                        border-end">
+                <i class="fas fa-coffee
+                          fa-2x mb-2" style="color:var(--accent)">
+                </i>
+                <p class="mb-0 fw-bold">
+                    Coffee Estates
+                </p>
+            </div>
+            <div class="col-md-3 col-6
+                        border-end">
+                <i class="fas fa-utensils
+                          fa-2x mb-2" style="color:var(--accent)">
+                </i>
+                <p class="mb-0 fw-bold">
+                    Home Cooked Food
+                </p>
+            </div>
+            <div class="col-md-3 col-6">
+                <i class="fas fa-wifi
+                          fa-2x mb-2" style="color:var(--accent)">
+                </i>
+                <p class="mb-0 fw-bold">
+                    Free WiFi
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- About + Aerial Views Section -->
+<section class="section">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-md-6">
+                <div class="section-title
+                            text-start">
+                    <h2>Your Home Away
+                        From Home</h2>
+                </div>
+                <p style="color:#555;
+                          line-height:1.9;
+                          margin-bottom:20px;">
+                    Nestled amidst the misty hills
+                    of Chickmagalur, Hill View
+                    Homestay offers a serene escape
+                    from city life. Wake up to
+                    panoramic views of the Western
+                    Ghats, breathe in the fresh
+                    mountain air, and enjoy the
+                    warmth of genuine Karnataka
+                    hospitality.
+                </p>
+                <p style="color:#555;
+                          line-height:1.9;
+                          margin-bottom:30px;">
+                    Surrounded by lush coffee and
+                    spice plantations, our homestay
+                    is the perfect base to explore
+                    Chickmagalur's natural wonders
+                    while enjoying all the comforts
+                    of home.
+                </p>
+                <div class="row text-center
+                            mb-4">
+                    <div class="col-4">
+                        <h3 style="color:var(--primary);
+                                   font-size:2rem;">
+                            4+
+                        </h3>
+                        <p style="color:#666;
+                                  font-size:0.9rem;">
+                            Room Types
+                        </p>
+                    </div>
+                    <div class="col-4">
+                        <h3 style="color:var(--primary);
+                                   font-size:2rem;">
+                            500+
+                        </h3>
+                        <p style="color:#666;
+                                  font-size:0.9rem;">
+                            Happy Guests
+                        </p>
+                    </div>
+                    <div class="col-4">
+                        <h3 style="color:var(--primary);
+                                   font-size:2rem;">
+                            5★
+                        </h3>
+                        <p style="color:#666;
+                                  font-size:0.9rem;">
+                            Rated
+                        </p>
+                    </div>
+                </div>
+                <a href="/enquiry" class="btn-primary-custom">
+                    Learn More
+                </a>
+            </div>
+            <div class="col-md-6">
+                <!-- Aerial Views Grid -->
+                <div class="row g-3">
+                    <div class="col-12">
+                        <img src="{{ url_for('static',
+                             filename='images/arial_view.jpg') }}" alt="Aerial View" style="width:100%;
+                                    height:250px;
+                                    object-fit:cover;
+                                    border-radius:15px;">
+                    </div>
+                    <div class="col-6">
+                        <img src="{{ url_for('static',
+                             filename='images/arial_view_1.jpg') }}" alt="Aerial View 1" style="width:100%;
+                                    height:160px;
+                                    object-fit:cover;
+                                    border-radius:15px;">
+                    </div>
+                    <div class="col-6">
+                        <img src="{{ url_for('static',
+                             filename='images/arial_view_2.jpg') }}" alt="Aerial View 2" style="width:100%;
+                                    height:160px;
+                                    object-fit:cover;
+                                    border-radius:15px;">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Entrance + Outside Section -->
+<section class="section section-light">
+    <div class="container">
+        <div class="section-title">
+            <h2>The Homestay</h2>
+            <p>A beautiful retreat waiting
+                to welcome you</p>
+        </div>
+        <div class="row g-4">
+            <div class="col-md-6">
+                <div style="position:relative;
+                            overflow:hidden;
+                            border-radius:15px;">
+                    <img src="{{ url_for('static',
+                         filename='images/entrance.jpg') }}" alt="Entrance" style="width:100%;
+                                height:500px;
+                                object-fit:cover;
+                                border-radius:15px;">
+                    <div style="position:absolute;
+                                bottom:0; left:0;
+                                right:0;
+                                background:linear-gradient(
+                                transparent,
+                                rgba(0,0,0,0.7));
+                                padding:20px;
+                                color:white;">
+                        <h5 style="margin:0;">
+                            Main Entrance
+                        </h5>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div style="position:relative;
+                            overflow:hidden;
+                            border-radius:15px;">
+                    <img src="{{ url_for('static',
+                         filename='images/other_side_entrance.jpg') }}" alt="Other Side" style="width:100%;
+                                height:500px;
+                                object-fit:cover;
+                                border-radius:15px;">
+                    <div style="position:absolute;
+                                bottom:0; left:0;
+                                right:0;
+                                background:linear-gradient(
+                                transparent,
+                                rgba(0,0,0,0.7));
+                                padding:20px;
+                                color:white;">
+                        <h5 style="margin:0;">
+                            Guest Block
+                        </h5>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Find and replace the bottom 3 col-md-4 
+                 divs (hall, balcony, bathroom) with this: -->
+            
+            <div class="col-md-6">
+                <div style="position:relative;
+                            overflow:hidden;
+                            border-radius:15px;">
+                    <img src="{{ url_for('static',
+                         filename='images/hall.jpg') }}" alt="Hall" style="width:100%;
+                                height:280px;
+                                object-fit:cover;">
+                    <div style="position:absolute;
+                                bottom:0; left:0;
+                                right:0;
+                                background:linear-gradient(
+                                transparent,
+                                rgba(0,0,0,0.7));
+                                padding:15px;
+                                color:white;">
+                        <h6 style="margin:0;">
+                            Common Hall
+                        </h6>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-6">
+                <div style="position:relative;
+                            overflow:hidden;
+                            border-radius:15px;">
+                    <img src="{{ url_for('static',
+                         filename='images/balcony.jpg') }}" alt="Balcony" style="width:100%;
+                                height:280px;
+                                object-fit:cover;">
+                    <div style="position:absolute;
+                                bottom:0; left:0;
+                                right:0;
+                                background:linear-gradient(
+                                transparent,
+                                rgba(0,0,0,0.7));
+                                padding:15px;
+                                color:white;">
+                        <h6 style="margin:0;">
+                            Balcony
+                        </h6>
+                    </div>
+                </div>
+            </div>
+           
+        </div>
+    </div>
+</section>
+
+<!-- Rooms Preview -->
+<section class="section">
+    <div class="container">
+        <div class="section-title">
+            <h2>Our Rooms</h2>
+            <p>Comfortable rooms with
+                stunning views</p>
+        </div>
+        <div class="row">
+            {% for room in rooms %}
+            <div class="col-md-4">
+                <div class="room-card">
+                    <img src="{{ url_for('static',
+                         filename='images/' +
+                         room.get('image',
+                         'room1.jpg')) }}" alt="{{ room.name }}">
+                    <div class="room-card-body">
+                        <h4>{{ room.name }}</h4>
+                        <p>{{ room.description }}</p>
+                        <div class="room-features">
+                            <span class="room-feature">
+                                <i class="fas fa-user">
+                                </i>
+                                {{ room.capacity }}
+                                Guests
+                            </span>
+                            <span class="room-feature">
+                                <i class="fas fa-bed">
+                                </i>
+                                {{ room.bed_type }}
+                            </span>
+                        </div>
+                        <div class="d-flex
+                             justify-content-between
+                             align-items-center">
+                            <div class="room-price">
+                                ₹{{ room.price }}
+                                <span>/night</span>
+                            </div>
+                            <a href="/booking" class="btn btn-sm" style="background:
+                                      var(--primary);
+                                      color:white;
+                                      border-radius:
+                                      20px;
+                                      padding:
+                                      8px 20px;">
+                                Book Now
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% else %}
+            <div class="col-12 text-center">
+                <p>Rooms coming soon!</p>
+            </div>
+            {% endfor %}
+        </div>
+        <div class="text-center mt-4">
+            <a href="/rooms" class="btn-primary-custom">
+                View All Rooms
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- Replace entire video section with this -->
+<section class="section section-dark">
+    <div class="container">
+        <div class="section-title light">
+            <h2>Experience Hill View</h2>
+            <p>Take a virtual tour of our
+                beautiful homestay</p>
+        </div>
+        <div class="row g-4 
+                    justify-content-center">
+
+            <!-- Video 1 -->
+            <div class="col-md-4 text-center">
+                <div style="background:#111;
+                            border-radius:20px;
+                            padding:10px;">
+                    <video controls style="width:100%;
+                                  height:400px;
+                                  object-fit:cover;
+                                  border-radius:15px;">
+                        <source src="{{ url_for('static',
+                                  filename='images/outside_view.mp4') }}" type="video/mp4">
+                    </video>
+                    <p class="mt-2" style="color:rgba(255,255,255,0.8);">
+                        <i class="fas fa-video" style="color:var(--accent)">
+                        </i>
+                        Outside View
+                    </p>
+                </div>
+            </div>
+
+            <!-- Video 2 -->
+            <div class="col-md-4 text-center">
+                <div style="background:#111;
+                            border-radius:20px;
+                            padding:10px;">
+                    <video controls style="width:100%;
+                                  height:400px;
+                                  object-fit:cover;
+                                  border-radius:15px;">
+                        <source src="{{ url_for('static',
+                                  filename='images/view.mp4') }}" type="video/mp4">
+                    </video>
+                    <p class="mt-2" style="color:rgba(255,255,255,0.8);">
+                        <i class="fas fa-eye" style="color:var(--accent)">
+                        </i>
+                        Scenic View
+                    </p>
+                </div>
+            </div>
+
+            <!-- Video 3 -->
+            <div class="col-md-4 text-center">
+                <div style="background:#111;
+                            border-radius:20px;
+                            padding:10px;">
+                    <video controls style="width:100%;
+                                  height:400px;
+                                  object-fit:cover;
+                                  border-radius:15px;">
+                        <source src="{{ url_for('static',
+                                  filename='images/road.mp4') }}" type="video/mp4">
+                    </video>
+                    <p class="mt-2" style="color:rgba(255,255,255,0.8);">
+                        <i class="fas fa-map-marked-alt" style="color:var(--accent)">
+                        </i>
+                        Road to Homestay
+                    </p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- Testimonials -->
+<section class="section section-light">
+    <div class="container">
+        <div class="section-title">
+            <h2>What Our Guests Say</h2>
+            <p>Real experiences from our
+                happy guests</p>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="testimonial-card">
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="testimonial-text">
+                        "Absolutely stunning views
+                        and warm hospitality. Best
+                        homestay experience in
+                        Chickmagalur!"
+                    </p>
+                    <p class="testimonial-author">
+                        — Rahul Sharma, Bangalore
+                    </p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="testimonial-card">
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="testimonial-text">
+                        "The food was incredible
+                        and the rooms were so
+                        cozy. Will definitely
+                        come back!"
+                    </p>
+                    <p class="testimonial-author">
+                        — Priya Nair, Chennai
+                    </p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="testimonial-card">
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="testimonial-text">
+                        "Perfect getaway from
+                        city life. Peaceful,
+                        beautiful and very
+                        well maintained!"
+                    </p>
+                    <p class="testimonial-author">
+                        — Amit Patel, Mumbai
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CTA Section -->
+<section class="section section-green">
+    <div class="container text-center">
+        <div class="section-title light">
+            <h2>Ready for Your
+                Mountain Escape?</h2>
+            <p>Book your stay today and
+                experience the beauty of
+                Chickmagalur</p>
+        </div>
+        <div class="hero-btns">
+            <a href="/booking" class="btn-primary-custom">
+                <i class="fas fa-calendar-check">
+                </i> Book Now
+            </a>
+            <a href="/enquiry" class="btn-secondary-custom">
+                <i class="fas fa-envelope">
+                </i> Send Enquiry
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- Bounce Animation -->
+<style>
+    @keyframes bounce {
+
+        0%,
+        100% {
+            transform: translateX(-50%) translateY(0);
+        }
+
+        50% {
+            transform: translateX(-50%) translateY(-10px);
+        }
+    }
+</style>
+
+{% endblock %}
