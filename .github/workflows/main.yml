@@ -57,3 +57,40 @@ jobs:
         run: |
           echo "Docker image built!"
           echo "Pushed to DockerHub!"
+  # Job 3 - Deploy to EC2
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy to EC2
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.EC2_HOST }}
+          username: ${{ secrets.EC2_USERNAME }}
+          key: ${{ secrets.EC2_SSH_KEY }}
+          script: |
+            # Install Docker if not installed
+            if ! command -v docker &> /dev/null; then
+              curl -fsSL https://get.docker.com -o get-docker.sh
+              sudo sh get-docker.sh
+              sudo usermod -aG docker ubuntu
+            fi
+
+            # Pull latest image from DockerHub
+            sudo docker pull ${{ secrets.DOCKER_USERNAME }}/hillview-app:latest
+
+            # Stop existing container if running
+            sudo docker stop hillview-app || true
+            sudo docker rm hillview-app || true
+
+            # Run new container
+            sudo docker run -d \
+              --name hillview-app \
+              -p 5000:5000 \
+              -e MONGO_URI="${{ secrets.MONGO_URI }}" \
+              -e SECRET_KEY="${{ secrets.SECRET_KEY }}" \
+              -e DB_NAME="${{ secrets.DB_NAME }}" \
+              --restart always \
+              ${{ secrets.DOCKER_USERNAME }}/hillview-app:latest
+
+            echo "Hill View app deployed successfully!"
