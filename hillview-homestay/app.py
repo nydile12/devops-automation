@@ -4,6 +4,7 @@ from dotenv import load_dotenv
 from datetime import datetime
 import os
 import ssl
+import certifi
 
 # Load environment variables
 load_dotenv()
@@ -13,7 +14,10 @@ app = Flask(__name__)
 app.secret_key = os.getenv('SECRET_KEY')
 
 # Connect to MongoDB
-client = MongoClient(os.getenv('MONGO_URI'),ssl=True, tlsAllowInvalidCertificates=True)
+client = MongoClient(
+    os.getenv('MONGO_URI'),
+    tlsCAFile=certifi.where()
+)
 db = client[os.getenv('DB_NAME')]
 
 # Collections
