@@ -3,7 +3,7 @@ from pymongo import MongoClient
 from dotenv import load_dotenv
 from datetime import datetime
 import os
-import ssl
+from prometheus_flask_exporter import PrometheusMetrics
 import certifi
 
 # Load environment variables
@@ -12,6 +12,13 @@ load_dotenv()
 # Initialize Flask app
 app = Flask(__name__)
 app.secret_key = os.getenv('SECRET_KEY')
+
+metrics = PrometheusMetrics(app, 
+          default_metrics_path='/metrics')
+
+metrics.info('hillview_app_info',
+             'Hill View Homestay Application',
+             version='1.0.0')
 
 # Connect to MongoDB
 client = MongoClient(
@@ -33,6 +40,15 @@ attractions_collection = db['attractions']
 def home():
     rooms = list(rooms_collection.find().limit(3))
     return render_template('home.html', rooms=rooms)
+
+@app.route('/metrics')
+def metrics_endpoint():
+    from prometheus_client import generate_latest
+    from flask import Response
+    return Response(
+        generate_latest(),
+        mimetype='text/plain'
+    )
 
 # Rooms page
 @app.route('/rooms')
